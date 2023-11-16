@@ -1,0 +1,17 @@
+.wrapper nav {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.activeLink {
+  color: #cccccc;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+}
