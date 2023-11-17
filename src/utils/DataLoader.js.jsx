@@ -1,14 +1,12 @@
-import { defer } from 'react-router-dom';
-
-const serverUrl = 'https://jsonplaceholder.typicode.com/';
+const serverUrl = "https://jsonplaceholder.typicode.com/";
 
 export class Api {
   static async getUsers() {
-    return await get('users');
+    return await get("users");
   }
 
   static async getAlbums() {
-    return await get('albums');
+    return await get("albums");
   }
 
   static async getUser({ id }) {
@@ -36,8 +34,8 @@ const get = async (url) => {
   const response = await fetch(`${serverUrl}/${url}`);
 
   if (!response.ok) {
-    console.log('response not ok 404');
-    throw new Response('', { status: 404 });
+    console.log("response not ok 404");
+    throw new Response("", { status: 404 });
   }
 
   const obj = await response.json();
