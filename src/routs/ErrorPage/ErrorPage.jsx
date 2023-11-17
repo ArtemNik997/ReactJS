@@ -1,11 +1,11 @@
-import { Box, Button, Container, Typography } from '@mui/material';
-import React from 'react';
-import { Link, isRouteErrorResponse, useRouteError } from 'react-router-dom';
+import { Button, Container, Typography } from "@mui/material";
+import React from "react";
+import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
 function ErrorPage() {
   const error =
     useRouteError() ??
-    new Response('', { status: 404, statusText: "This page doesn't exist!" });
+    new Response("", { status: 404, statusText: "This page doesn't exist!" });
 
   console.log(error);
 
@@ -19,31 +19,31 @@ function ErrorPage() {
     }
 
     if (error.status === 503) {
-      error.statusText = 'Looks like our API is down';
+      error.statusText = "Looks like our API is down";
     }
 
     if (error.status === 418) {
-      error.statusText = 'U+1FAD6';
+      error.statusText = "U+1FAD6";
     }
   }
 
   return (
     <Container
       sx={{
-        width: '60%',
-        m: 'auto',
-        paddingY: '3rem',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '2rem',
-        flexDirection: 'column',
+        width: "60%",
+        m: "auto",
+        paddingY: "3rem",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "2rem",
+        flexDirection: "column",
       }}
     >
       <Typography variant="h2">{error.status}</Typography>
       <Typography variant="body1">{error.statusText}</Typography>
 
-      <Button variant="contained" href={'/'}>
+      <Button variant="contained" href={"/"}>
         Go to page Users
       </Button>
     </Container>

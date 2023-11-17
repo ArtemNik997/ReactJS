@@ -1,9 +1,9 @@
-import React, { Suspense } from 'react';
-import { Await, Link, useLoaderData } from 'react-router-dom';
+import React, { Suspense } from "react";
+import { Await, Link, useLoaderData } from "react-router-dom";
 
-import { Box, CircularProgress, Typography } from '@mui/material';
-import { Api, LoadObject, loadPromise } from '../../../utils/DataLoader.js'; //LoadObject
-import PhotosView from '../../../components/Photos/PhotosView';
+import { Box, CircularProgress, Typography } from "@mui/material";
+import { Api } from "../../../utils/DataLoader.js"; //LoadObject
+import PhotosView from "../../../components/Photos/PhotosView";
 
 export const URL = {
   photos: (id) => `https://jsonplaceholder.typicode.com/photos/${id}`,
@@ -20,7 +20,7 @@ export const loader = async ({ params: { id } }) => {
     return { album, userPromise, photosPromise };
   } catch (error) {
     console.error(error);
-    throw new Response('', { status: 404 });
+    throw new Response("", { status: 404 });
   }
 };
 
@@ -29,7 +29,7 @@ function Album() {
 
   return (
     <>
-      <Box sx={{ my: '1rem' }}>
+      <Box sx={{ my: "1rem" }}>
         <Typography variant="h6">Album: {album.title}</Typography>
         <Typography variant="body1">
           Author:&nbsp;&nbsp;
@@ -44,12 +44,12 @@ function Album() {
         </Typography>
       </Box>
 
-      <Suspense fallback={<CircularProgress sx={{ mx: '45%', my: '4rem' }} />}>
+      <Suspense fallback={<CircularProgress sx={{ mx: "45%", my: "4rem" }} />}>
         <Await
           resolve={photosPromise}
           errorElement={
-            <Box sx={{ width: '20rem', mx: 'auto', my: '2rem' }}>
-              <Typography variant="body1" sx={{ textAlign: 'center' }}>
+            <Box sx={{ width: "20rem", mx: "auto", my: "2rem" }}>
+              <Typography variant="body1" sx={{ textAlign: "center" }}>
                 Ooops, something goes wrong!
               </Typography>
             </Box>

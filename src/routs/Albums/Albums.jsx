@@ -1,28 +1,16 @@
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListSubheader,
-  Paper,
-  Typography,
-} from '@mui/material';
-import WifiIcon from '@mui/icons-material/Wifi';
-import React, { useCallback, useEffect, useState } from 'react';
-import { Link, useLoaderData, useNavigate } from 'react-router-dom';
-import PhotoAlbumIcon from '@mui/icons-material/PhotoAlbum';
-import { Api, LoadObject } from '../../utils/DataLoader.js';
+import { Box, List, ListItem, Typography } from "@mui/material";
+import React from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import PhotoAlbumIcon from "@mui/icons-material/PhotoAlbum";
+import { Api } from "../../utils/DataLoader.js";
 
 export const loader = async () => {
   try {
-    // const albums = await LoadObject(
-    //   'https://jsonplaceholder.typicode.com/albums'
-    // );
     const albums = await Api.getAlbums();
 
     return { albums };
   } catch (error) {
-    throw new Response('', { status: 404 });
+    throw new Response("", { status: 404 });
   }
 };
 
@@ -30,7 +18,7 @@ function Albums() {
   const { albums } = useLoaderData();
 
   return (
-    <List sx={{ padding: '1rem 0' }}>
+    <List sx={{ padding: "1rem 0" }}>
       {albums.length ? (
         albums.map((album) => {
           return (
@@ -38,9 +26,9 @@ function Albums() {
               <Link to={`/albums/${album.id}`}>
                 <Box
                   sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    gap: '0.5rem',
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: "0.5rem",
                   }}
                 >
                   <PhotoAlbumIcon />
@@ -51,8 +39,8 @@ function Albums() {
           );
         })
       ) : (
-        <Box sx={{ width: '20rem', mx: 'auto', my: '2rem' }}>
-          <Typography variant="h6" sx={{ textAlign: 'center' }}>
+        <Box sx={{ width: "20rem", mx: "auto", my: "2rem" }}>
+          <Typography variant="h6" sx={{ textAlign: "center" }}>
             Album is empty
           </Typography>
         </Box>
